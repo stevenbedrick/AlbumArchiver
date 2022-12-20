@@ -8,14 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    
+    @EnvironmentObject var library: Library
+    
+    
+    init() {
+        
+    }
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            VStack {
+
+                LibraryMenuView(withLibrary: library)
+                Button("Add Album") {
+                    library.addAlbum(named: "New Album")
+                }.padding()
+            }
+            
         }
-        .padding()
     }
 }
 

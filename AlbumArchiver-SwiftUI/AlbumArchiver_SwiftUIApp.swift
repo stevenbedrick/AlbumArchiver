@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct AlbumArchiver_SwiftUIApp: App {
+    
+    @StateObject var library = Library()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(library)
         }
     }
 }
