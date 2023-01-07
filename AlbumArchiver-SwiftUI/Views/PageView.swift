@@ -31,19 +31,21 @@ struct PageView: View {
 //            List(thisPage.items) { anItem in
             
             // Option 2: LazyVGrid in a ScrollView
-            ZStack { // se we have something to fill the container
-                ScrollView {
-                    VStack {
-                        LazyVGrid(columns: gridLayout) {
-                            ForEach(thisPage.items) { anItem in
-                                ArchivedItemView(item: anItem)
-                            }
-                        }
-                    }
-                }
-            }.background(active ? Color.red : Color.blue)
-                .frame(maxHeight: .infinity)
-                .onDrop(of: ["public.file-url"], delegate: dropDelegate)
+            
+            // this is the one that is actually working
+//            ZStack { // se we have something to fill the container
+//                ScrollView {
+//                    VStack {
+//                        LazyVGrid(columns: gridLayout) {
+//                            ForEach(thisPage.items) { anItem in
+//                                ArchivedItemView(item: anItem)
+//                            }
+//                        }
+//                    }
+//                }
+//            }.background(active ? Color.red : Color.blue)
+//                .frame(maxHeight: .infinity)
+//                .onDrop(of: ["public.file-url"], delegate: dropDelegate)
             
             // Option 3: Table
 //            Table(thisPage.items) {
@@ -60,6 +62,9 @@ struct PageView: View {
 //                }
 //            }
             
+            
+            // Option 4: NSCollectionView wrapper
+            ItemCollectionViewHost(forPage: thisPage)
             
 
             HStack {
