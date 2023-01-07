@@ -22,6 +22,11 @@ public class Page : Identifiable, ObservableObject, Hashable {
         self.number = number
     }
     
+    init(number: String, withItems items: [ArchivedItem]) {
+        self.number = number
+        self.items = items
+    }
+    
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
         hasher.combine(number)

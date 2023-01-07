@@ -22,8 +22,14 @@ class Library : Identifiable, ObservableObject {
         albums = [] // dummy initialization
         albums = [Album(inLibrary: self,
             name: "First",
-pages: [Page(number: "1"), Page(number: "2")]
-),
+            pages: [
+                Page(number: "1", withItems: [
+                    ArchivedItem(withName: "foo.jpeg"),
+                    ArchivedItem(withName: "bar.png"),
+                    ArchivedItem(withName: "baz.tiff")
+                ]),
+                Page(number: "2")
+            ]),
                   Album(inLibrary: self,
 name: "Second",
 pages: [Page(number: "I"), Page(number: "II"), Page(number: "III")]
