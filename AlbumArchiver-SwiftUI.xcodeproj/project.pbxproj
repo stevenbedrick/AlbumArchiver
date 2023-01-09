@@ -22,12 +22,13 @@
 		B04271B5293D794B00F424E5 /* LibraryMenuVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04271B4293D794B00F424E5 /* LibraryMenuVIew.swift */; };
 		B04271B7293E816100F424E5 /* ArchivedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04271B6293E816100F424E5 /* ArchivedItem.swift */; };
 		B04271B92940FED400F424E5 /* ArchivedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04271B82940FED300F424E5 /* ArchivedItemView.swift */; };
+		B04FD4F5296BC78C004345F5 /* ArchivedITmeCollectionViewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FD4F4296BC78C004345F5 /* ArchivedITmeCollectionViewItemView.swift */; };
 		B09783B2294FF1DC00C13D2D /* ArchivedItemGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09783B1294FF1DC00C13D2D /* ArchivedItemGrid.swift */; };
 		B0A12E482960EB5A005CA3F4 /* ItemCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A12E462960EB5A005CA3F4 /* ItemCollectionViewController.swift */; };
 		B0A12E492960EB5A005CA3F4 /* ItemCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A12E472960EB5A005CA3F4 /* ItemCollectionViewController.xib */; };
 		B0A12E4B2960EB90005CA3F4 /* ItemCollectionViewHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A12E4A2960EB90005CA3F4 /* ItemCollectionViewHost.swift */; };
-		B0A12E4E2960FF62005CA3F4 /* ArchivedItemCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A12E4C2960FF62005CA3F4 /* ArchivedItemCollectionViewItem.swift */; };
-		B0A12E4F2960FF62005CA3F4 /* ArchivedItemCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A12E4D2960FF62005CA3F4 /* ArchivedItemCollectionViewItem.xib */; };
+		B0A12E4E2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A12E4C2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.swift */; };
+		B0A12E4F2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A12E4D2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,12 +68,13 @@
 		B04271B4293D794B00F424E5 /* LibraryMenuVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryMenuVIew.swift; sourceTree = "<group>"; };
 		B04271B6293E816100F424E5 /* ArchivedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedItem.swift; sourceTree = "<group>"; };
 		B04271B82940FED300F424E5 /* ArchivedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedItemView.swift; sourceTree = "<group>"; };
+		B04FD4F4296BC78C004345F5 /* ArchivedITmeCollectionViewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedITmeCollectionViewItemView.swift; sourceTree = "<group>"; };
 		B09783B1294FF1DC00C13D2D /* ArchivedItemGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedItemGrid.swift; sourceTree = "<group>"; };
 		B0A12E462960EB5A005CA3F4 /* ItemCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewController.swift; sourceTree = "<group>"; };
 		B0A12E472960EB5A005CA3F4 /* ItemCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCollectionViewController.xib; sourceTree = "<group>"; };
 		B0A12E4A2960EB90005CA3F4 /* ItemCollectionViewHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewHost.swift; sourceTree = "<group>"; };
-		B0A12E4C2960FF62005CA3F4 /* ArchivedItemCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedItemCollectionViewItem.swift; sourceTree = "<group>"; };
-		B0A12E4D2960FF62005CA3F4 /* ArchivedItemCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArchivedItemCollectionViewItem.xib; sourceTree = "<group>"; };
+		B0A12E4C2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedItemCollectionViewItemController.swift; sourceTree = "<group>"; };
+		B0A12E4D2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArchivedItemCollectionViewItemController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,7 +175,7 @@
 		B04271AF293D4CA900F424E5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B0A12E3D2960E465005CA3F4 /* Collection View Attempt */,
+				B0A12E3D2960E465005CA3F4 /* Collection View Hosting Method */,
 				B04271B0293D4CB900F424E5 /* AlbumView.swift */,
 				B04271B2293D613600F424E5 /* PageView.swift */,
 				B04271B4293D794B00F424E5 /* LibraryMenuVIew.swift */,
@@ -183,16 +185,17 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		B0A12E3D2960E465005CA3F4 /* Collection View Attempt */ = {
+		B0A12E3D2960E465005CA3F4 /* Collection View Hosting Method */ = {
 			isa = PBXGroup;
 			children = (
 				B0A12E462960EB5A005CA3F4 /* ItemCollectionViewController.swift */,
 				B0A12E472960EB5A005CA3F4 /* ItemCollectionViewController.xib */,
 				B0A12E4A2960EB90005CA3F4 /* ItemCollectionViewHost.swift */,
-				B0A12E4C2960FF62005CA3F4 /* ArchivedItemCollectionViewItem.swift */,
-				B0A12E4D2960FF62005CA3F4 /* ArchivedItemCollectionViewItem.xib */,
+				B0A12E4C2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.swift */,
+				B0A12E4D2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.xib */,
+				B04FD4F4296BC78C004345F5 /* ArchivedITmeCollectionViewItemView.swift */,
 			);
-			path = "Collection View Attempt";
+			path = "Collection View Hosting Method";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,7 +304,7 @@
 			files = (
 				B0A12E492960EB5A005CA3F4 /* ItemCollectionViewController.xib in Resources */,
 				B0427185293D49D200F424E5 /* Preview Assets.xcassets in Resources */,
-				B0A12E4F2960FF62005CA3F4 /* ArchivedItemCollectionViewItem.xib in Resources */,
+				B0A12E4F2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.xib in Resources */,
 				B0427182293D49D200F424E5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,8 +335,9 @@
 				B042717E293D49CF00F424E5 /* AlbumArchiver_SwiftUIApp.swift in Sources */,
 				B09783B2294FF1DC00C13D2D /* ArchivedItemGrid.swift in Sources */,
 				B04271AE293D4A2100F424E5 /* Library.swift in Sources */,
+				B04FD4F5296BC78C004345F5 /* ArchivedITmeCollectionViewItemView.swift in Sources */,
 				B04271B7293E816100F424E5 /* ArchivedItem.swift in Sources */,
-				B0A12E4E2960FF62005CA3F4 /* ArchivedItemCollectionViewItem.swift in Sources */,
+				B0A12E4E2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.swift in Sources */,
 				B04271B92940FED400F424E5 /* ArchivedItemView.swift in Sources */,
 				B04271AC293D4A1900F424E5 /* Page.swift in Sources */,
 				B04271B5293D794B00F424E5 /* LibraryMenuVIew.swift in Sources */,

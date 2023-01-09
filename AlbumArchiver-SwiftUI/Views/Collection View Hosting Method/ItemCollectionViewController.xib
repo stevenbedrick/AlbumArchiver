@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="ItemCollectionViewController" customModule="AlbumArchiver_SwiftUI" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="saa-IQ-lG3" id="O1V-r1-lln"/>
+                <outlet property="scrollView" destination="2tT-V0-pmQ" id="ss3-qy-Y2P"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -18,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView wantsLayer="YES" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tT-V0-pmQ">
+                <scrollView wantsLayer="YES" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tT-V0-pmQ" customClass="FileDropScrollView" customModule="AlbumArchiver_SwiftUI" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="xeW-Kz-I96">
@@ -33,6 +34,10 @@
                                     <edgeInsets key="sectionInset" left="20" right="20" top="20" bottom="20"/>
                                 </collectionViewFlowLayout>
                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="-2" id="7He-Ph-3BQ"/>
+                                    <outlet property="delegate" destination="-2" id="OXB-lH-tP0"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                     </clipView>
