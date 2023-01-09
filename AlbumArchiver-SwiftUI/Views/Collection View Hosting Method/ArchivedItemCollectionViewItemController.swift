@@ -34,6 +34,17 @@ class ArchivedItemCollectionViewItemController: NSCollectionViewItem {
     
     var delegate : ArchivedItemCollectionViewItemDelegate?
     
+    let defaultBorderWidth = 1.0
+    let selectedBorderWidth = 5.0
+    
+    override var isSelected: Bool {
+        didSet {
+            
+            self.box?.borderWidth = isSelected ? selectedBorderWidth : defaultBorderWidth
+            
+        }
+    }
+    
     @IBOutlet weak var box: NSBox!
     
     override func viewDidLoad() {
@@ -44,6 +55,8 @@ class ArchivedItemCollectionViewItemController: NSCollectionViewItem {
         }
         
     }
+    
+    
     
     func setupItem(item: ArchivedItem) {
         

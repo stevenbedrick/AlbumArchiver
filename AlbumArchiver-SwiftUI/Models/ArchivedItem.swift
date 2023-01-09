@@ -15,13 +15,22 @@ public class ArchivedItem : Identifiable, ObservableObject, Hashable {
     }
     
     @Published var name : String
+    @Published var imageFileURL : URL?
     @Published var image : NSImage?
+    @Published var notes : String
     
     public let id = UUID()
     
-    init(withName: String, withImage: NSImage? = nil) {
+    init(withName: String, withImage: NSImage? = nil,atUrl: URL? = nil,  withNotes: String? = nil) {
         name = withName
         image = withImage
+        imageFileURL = atUrl
+        
+        if let s = withNotes {
+            notes = s
+        } else {
+            notes = ""
+        }
     }
 
     public func hash(into hasher: inout Hasher) {
@@ -35,6 +44,7 @@ public class ArchivedItem : Identifiable, ObservableObject, Hashable {
             
             let rawIm = NSImage(byReferencing: fromUrl)
             if rawIm.isValid {
+                self.imageFileURL = fromUrl
                 
                 let fileName = fromUrl.lastPathComponent
                 

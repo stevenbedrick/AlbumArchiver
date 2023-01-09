@@ -80,6 +80,8 @@ extension ItemCollectionViewController : NSCollectionViewDataSource {
 
 extension ItemCollectionViewController : NSCollectionViewDelegate {
     
+    // MARK: Drag/Drop
+    
     func collectionView(_ collectionView: NSCollectionView, pasteboardWriterForItemAt indexPath: IndexPath) -> NSPasteboardWriting? {
         let pasteboardItem = NSPasteboardItem()
         
@@ -136,6 +138,14 @@ extension ItemCollectionViewController : NSCollectionViewDelegate {
     }
 
     
+    
+    // MARK: Selection
+    func collectionView(_ collectionView: NSCollectionView, didDeselectItemsAt indexPaths: Set<IndexPath>) {
+        print("Selection! \(indexPaths)")
+    }
+    
+    
+    
 }
 
 
@@ -189,6 +199,7 @@ class FileDropScrollView : NSScrollView {
         
         return true
     }
+    
 }
 
 extension ItemCollectionViewController : FileDragDropDelegate {
@@ -209,7 +220,7 @@ extension ItemCollectionViewController : FileDragDropDelegate {
                     // first, figure out file name
                     let newItem : ArchivedItem
                     if let fileName = url.lastPathComponent {
-                        newItem = ArchivedItem(withName: fileName, withImage: rawIm)
+                        newItem = ArchivedItem(withName: fileName, withImage: rawIm, atUrl: url as URL)
                     } else {
                         newItem = ArchivedItem(withName: "New Item", withImage: rawIm)
                     }
@@ -252,6 +263,8 @@ extension ItemCollectionViewController : ArchivedItemCollectionViewItemDelegate 
     func doubleClickAtIndexPath(path: IndexPath) {
         if let targetArchivedItem = thisPage?.items[path[1]] {
             print("handle double click for \(targetArchivedItem.name)")
+            let itemView = ArchivedItemView(withItem: targetArchivedItem)
+            itemView.openInWindow(title: targetArchivedItem.name, sender: self)
         }
     }
     

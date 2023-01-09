@@ -16,29 +16,67 @@ struct ArchivedItemView: View {
     static let initialPlaceholderImage = NSImage(systemSymbolName: "photo", accessibilityDescription: "Drag image file here")!
     
     
+    init(withItem item: ArchivedItem) {
+        self.item = item
+    }
+
     
     var body: some View {
         
         let dropDelegate = ItemDropDelegate(active: $active, myItem: item)
         
-        GroupBox {
-            
-            Text(item.name)
-            
-            if let i = item.image {
-                Image(nsImage: i).resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 250, height: 250)
-
-            } else {
-                Image(nsImage: ArchivedItemView.initialPlaceholderImage)
+        VStack {
+            Spacer()
+            HStack {
+                Spacer()
+//                ScrollView {
+                    Form {
+                        
+                        TextField("Title:", text: $item.name)
+                        
+                        GroupBox {
+                            
+                            
+                            if let i = item.image {
+                                
+                                    Image(nsImage: i).resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 380, height: 400)
+                                        .onTapGesture(count: 2) {
+                                            print("Double-clicked")
+                                            if let u = item.imageFileURL {
+                                                print("Will try and open \(u)")
+                                                NSWorkspace.shared.open(u)
+                                            } else {
+                                                print("no url to open")
+                                            }
+                                        }
+                                
+                                
+                            } else {
+                                Image(nsImage: ArchivedItemView.initialPlaceholderImage)
+                            }
+                            
+                            
+                        }.background(active ? Color.gray : Color.clear)
+                            .onDrop(of: ["public.file-url"], delegate: dropDelegate)
+                            
+                        
+                        Divider()
+                        
+                        VStack {
+                            Text("Notes:").frame(maxWidth: .infinity, alignment: .leading)
+                            TextEditor(text: $item.notes)
+                        }
+                        
+                        
+//                    }
+                }
+                
+                Spacer()
             }
-            
-            
-        }.background(active ? Color.gray : Color.clear)
-        .onDrop(of: ["public.file-url"], delegate: dropDelegate)
-            
-        
+            Spacer()
+        }.frame(minWidth: 420, minHeight: 512.0)
     }
     
     @discardableResult

@@ -24,9 +24,9 @@ class Library : Identifiable, ObservableObject {
             name: "First",
             pages: [
                 Page(number: "1", withItems: [
-                    ArchivedItem(withName: "foo.jpeg"),
-                    ArchivedItem(withName: "bar.png"),
-                    ArchivedItem(withName: "baz.tiff")
+//                    ArchivedItem(withName: "foo.jpeg"),
+//                    ArchivedItem(withName: "bar.png"),
+//                    ArchivedItem(withName: "baz.tiff")
                 ]),
                 Page(number: "2")
             ]),
