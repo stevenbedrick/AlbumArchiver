@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct AlbumArchiver_SwiftUIApp: App {
     
-    @StateObject var library = Library()
+    @StateObject var library = Library.initAtTestDirLocation()
     
     var body: some Scene {
         WindowGroup {

@@ -42,13 +42,16 @@ public class ArchivedItem : Identifiable, ObservableObject, Hashable {
         
         DispatchQueue.global(qos: .userInitiated).async {
             
+            // Try and make an image out of this URL; if it succeeds, we're good, otherwise
+            // ignore it and move on
             let rawIm = NSImage(byReferencing: fromUrl)
             if rawIm.isValid {
-                self.imageFileURL = fromUrl
-                
+
                 let fileName = fromUrl.lastPathComponent
                 
                 DispatchQueue.main.async {
+                    // We need to do this on the main thread because these are @Published
+                    self.imageFileURL = fromUrl
                     self.image = rawIm
                     self.name = fileName
                 }

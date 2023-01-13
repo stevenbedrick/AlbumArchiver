@@ -23,6 +23,15 @@
 		B04271B7293E816100F424E5 /* ArchivedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04271B6293E816100F424E5 /* ArchivedItem.swift */; };
 		B04271B92940FED400F424E5 /* ArchivedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04271B82940FED300F424E5 /* ArchivedItemView.swift */; };
 		B04FD4F5296BC78C004345F5 /* ArchivedITmeCollectionViewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04FD4F4296BC78C004345F5 /* ArchivedITmeCollectionViewItemView.swift */; };
+		B0616563296E784F00B3F87E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0616562296E784F00B3F87E /* main.swift */; };
+		B061656B296E789200B3F87E /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04271AD293D4A2100F424E5 /* Library.swift */; };
+		B061656C296E789200B3F87E /* ArchivedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04271B6293E816100F424E5 /* ArchivedItem.swift */; };
+		B061656D296E789200B3F87E /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04271A9293D4A1000F424E5 /* Album.swift */; };
+		B061656E296E789200B3F87E /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04271AB293D4A1900F424E5 /* Page.swift */; };
+		B0616571296E7F6A00B3F87E /* AlbumIOUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0616570296E7F6A00B3F87E /* AlbumIOUtils.swift */; };
+		B0616572296E809700B3F87E /* AlbumIOUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0616570296E7F6A00B3F87E /* AlbumIOUtils.swift */; };
+		B0616575296F701F00B3F87E /* FaceDetectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0616574296F701F00B3F87E /* FaceDetectionManager.swift */; };
+		B0616576296F744000B3F87E /* FaceDetectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0616574296F701F00B3F87E /* FaceDetectionManager.swift */; };
 		B09783B2294FF1DC00C13D2D /* ArchivedItemGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09783B1294FF1DC00C13D2D /* ArchivedItemGrid.swift */; };
 		B0A12E482960EB5A005CA3F4 /* ItemCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A12E462960EB5A005CA3F4 /* ItemCollectionViewController.swift */; };
 		B0A12E492960EB5A005CA3F4 /* ItemCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A12E472960EB5A005CA3F4 /* ItemCollectionViewController.xib */; };
@@ -48,6 +57,18 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B061655E296E784F00B3F87E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		B042717A293D49CF00F424E5 /* AlbumArchiver-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AlbumArchiver-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B042717D293D49CF00F424E5 /* AlbumArchiver_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumArchiver_SwiftUIApp.swift; sourceTree = "<group>"; };
@@ -69,6 +90,10 @@
 		B04271B6293E816100F424E5 /* ArchivedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedItem.swift; sourceTree = "<group>"; };
 		B04271B82940FED300F424E5 /* ArchivedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedItemView.swift; sourceTree = "<group>"; };
 		B04FD4F4296BC78C004345F5 /* ArchivedITmeCollectionViewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedITmeCollectionViewItemView.swift; sourceTree = "<group>"; };
+		B0616560296E784F00B3F87E /* AlbumIOScratchpad */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AlbumIOScratchpad; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0616562296E784F00B3F87E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		B0616570296E7F6A00B3F87E /* AlbumIOUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumIOUtils.swift; sourceTree = "<group>"; };
+		B0616574296F701F00B3F87E /* FaceDetectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDetectionManager.swift; sourceTree = "<group>"; };
 		B09783B1294FF1DC00C13D2D /* ArchivedItemGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedItemGrid.swift; sourceTree = "<group>"; };
 		B0A12E462960EB5A005CA3F4 /* ItemCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewController.swift; sourceTree = "<group>"; };
 		B0A12E472960EB5A005CA3F4 /* ItemCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCollectionViewController.xib; sourceTree = "<group>"; };
@@ -99,6 +124,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B061655D296E784F00B3F87E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -108,6 +140,7 @@
 				B042717C293D49CF00F424E5 /* AlbumArchiver-SwiftUI */,
 				B042718E293D49D200F424E5 /* AlbumArchiver-SwiftUITests */,
 				B0427198293D49D200F424E5 /* AlbumArchiver-SwiftUIUITests */,
+				B0616561296E784F00B3F87E /* AlbumIOScratchpad */,
 				B042717B293D49CF00F424E5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -118,6 +151,7 @@
 				B042717A293D49CF00F424E5 /* AlbumArchiver-SwiftUI.app */,
 				B042718B293D49D200F424E5 /* AlbumArchiver-SwiftUITests.xctest */,
 				B0427195293D49D200F424E5 /* AlbumArchiver-SwiftUIUITests.xctest */,
+				B0616560296E784F00B3F87E /* AlbumIOScratchpad */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,6 +159,8 @@
 		B042717C293D49CF00F424E5 /* AlbumArchiver-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				B0616573296F700A00B3F87E /* Face Indexing Stuff */,
+				B061656F296E7F5D00B3F87E /* IO */,
 				B04271AF293D4CA900F424E5 /* Views */,
 				B04271A8293D49EF00F424E5 /* Models */,
 				B042717D293D49CF00F424E5 /* AlbumArchiver_SwiftUIApp.swift */,
@@ -183,6 +219,30 @@
 				B09783B1294FF1DC00C13D2D /* ArchivedItemGrid.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B0616561296E784F00B3F87E /* AlbumIOScratchpad */ = {
+			isa = PBXGroup;
+			children = (
+				B0616562296E784F00B3F87E /* main.swift */,
+			);
+			path = AlbumIOScratchpad;
+			sourceTree = "<group>";
+		};
+		B061656F296E7F5D00B3F87E /* IO */ = {
+			isa = PBXGroup;
+			children = (
+				B0616570296E7F6A00B3F87E /* AlbumIOUtils.swift */,
+			);
+			path = IO;
+			sourceTree = "<group>";
+		};
+		B0616573296F700A00B3F87E /* Face Indexing Stuff */ = {
+			isa = PBXGroup;
+			children = (
+				B0616574296F701F00B3F87E /* FaceDetectionManager.swift */,
+			);
+			path = "Face Indexing Stuff";
 			sourceTree = "<group>";
 		};
 		B0A12E3D2960E465005CA3F4 /* Collection View Hosting Method */ = {
@@ -254,6 +314,23 @@
 			productReference = B0427195293D49D200F424E5 /* AlbumArchiver-SwiftUIUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		B061655F296E784F00B3F87E /* AlbumIOScratchpad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0616566296E784F00B3F87E /* Build configuration list for PBXNativeTarget "AlbumIOScratchpad" */;
+			buildPhases = (
+				B061655C296E784F00B3F87E /* Sources */,
+				B061655D296E784F00B3F87E /* Frameworks */,
+				B061655E296E784F00B3F87E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AlbumIOScratchpad;
+			productName = AlbumIOScratchpad;
+			productReference = B0616560296E784F00B3F87E /* AlbumIOScratchpad */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -261,7 +338,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					B0427179293D49CF00F424E5 = {
@@ -274,6 +351,9 @@
 					B0427194293D49D200F424E5 = {
 						CreatedOnToolsVersion = 14.1;
 						TestTargetID = B0427179293D49CF00F424E5;
+					};
+					B061655F296E784F00B3F87E = {
+						CreatedOnToolsVersion = 14.2;
 					};
 				};
 			};
@@ -293,6 +373,7 @@
 				B0427179293D49CF00F424E5 /* AlbumArchiver-SwiftUI */,
 				B042718A293D49D200F424E5 /* AlbumArchiver-SwiftUITests */,
 				B0427194293D49D200F424E5 /* AlbumArchiver-SwiftUIUITests */,
+				B061655F296E784F00B3F87E /* AlbumIOScratchpad */,
 			);
 		};
 /* End PBXProject section */
@@ -331,6 +412,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B04271B1293D4CB900F424E5 /* AlbumView.swift in Sources */,
+				B0616571296E7F6A00B3F87E /* AlbumIOUtils.swift in Sources */,
 				B0427180293D49CF00F424E5 /* ContentView.swift in Sources */,
 				B042717E293D49CF00F424E5 /* AlbumArchiver_SwiftUIApp.swift in Sources */,
 				B09783B2294FF1DC00C13D2D /* ArchivedItemGrid.swift in Sources */,
@@ -342,6 +424,7 @@
 				B04271AC293D4A1900F424E5 /* Page.swift in Sources */,
 				B04271B5293D794B00F424E5 /* LibraryMenuVIew.swift in Sources */,
 				B04271AA293D4A1000F424E5 /* Album.swift in Sources */,
+				B0616575296F701F00B3F87E /* FaceDetectionManager.swift in Sources */,
 				B04271B3293D613600F424E5 /* PageView.swift in Sources */,
 				B0A12E482960EB5A005CA3F4 /* ItemCollectionViewController.swift in Sources */,
 				B0A12E4B2960EB90005CA3F4 /* ItemCollectionViewHost.swift in Sources */,
@@ -362,6 +445,20 @@
 			files = (
 				B042719C293D49D200F424E5 /* AlbumArchiver_SwiftUIUITestsLaunchTests.swift in Sources */,
 				B042719A293D49D200F424E5 /* AlbumArchiver_SwiftUIUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B061655C296E784F00B3F87E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0616563296E784F00B3F87E /* main.swift in Sources */,
+				B061656E296E789200B3F87E /* Page.swift in Sources */,
+				B061656C296E789200B3F87E /* ArchivedItem.swift in Sources */,
+				B0616572296E809700B3F87E /* AlbumIOUtils.swift in Sources */,
+				B0616576296F744000B3F87E /* FaceDetectionManager.swift in Sources */,
+				B061656B296E789200B3F87E /* Library.swift in Sources */,
+				B061656D296E789200B3F87E /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +717,28 @@
 			};
 			name = Release;
 		};
+		B0616564296E784F00B3F87E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2E7A87Y536;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B0616565296E784F00B3F87E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2E7A87Y536;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -655,6 +774,15 @@
 			buildConfigurations = (
 				B04271A6293D49D200F424E5 /* Debug */,
 				B04271A7293D49D200F424E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B0616566296E784F00B3F87E /* Build configuration list for PBXNativeTarget "AlbumIOScratchpad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0616564296E784F00B3F87E /* Debug */,
+				B0616565296E784F00B3F87E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

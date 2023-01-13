@@ -14,12 +14,11 @@ public class Album : Identifiable, ObservableObject, Equatable, Hashable {
         return (lhs.id == rhs.id) && (lhs.name == rhs.name)
     }
     
-    
     public let id = UUID()
     @Published var name: String 
     @Published var pages: [Page]
     
-    var memberOf: Library
+    var memberOf: Library?
     
     
     public func hash(into hasher: inout Hasher) {
@@ -28,13 +27,18 @@ public class Album : Identifiable, ObservableObject, Equatable, Hashable {
     }
 
     
-    init(inLibrary: Library, name: String, pages: [Page]?) {
+    init(withName name: String, pages: [Page]?) {
         self.name = name
         if let p = pages {
             self.pages = p
         } else {
             self.pages = []
         }
+    }
+    
+    convenience init(inLibrary: Library, name: String, pages: [Page]?) {
+        self.init(withName: name, pages: pages)
+        
         memberOf = inLibrary
         
     }
