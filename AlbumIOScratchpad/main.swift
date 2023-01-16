@@ -26,12 +26,16 @@ case .success(let l):
         for p in a.pages {
             print("\t\t\(p.number)")
             for i in p.items {
-//                print("\t\t\t\(i.name)")
-                if let faces = FaceDetectionManager.facesInItem(item: i) {
-                    if faces.count > 0 {
-                        
-                        print("\t\t\t\(i.name)")
-                        print(faces)
+                if i.name == "IMG_2211.jpg" || i.name == "IMG_2211 fewer faces.jpg" {
+                    //                print("\t\t\t\(i.name)")
+                    if let faces = FaceDetectionManager.facesInItem(item: i) {
+                        if faces.count > 0 {
+                            
+                            print("\t\t\t\(i.name)")
+                            print(faces)
+                        }
+                    } else {
+                        print("No faces in item \(i.name)")
                     }
                 }
                     
@@ -39,7 +43,7 @@ case .success(let l):
         }
     }
     
-    print(l)
+//    print(l)
 case .failure(let e):
     print("Error loading library: \(e)")
 }

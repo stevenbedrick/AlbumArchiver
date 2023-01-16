@@ -7,6 +7,8 @@
 
 import Foundation
 import SwiftUI
+import Vision
+import Combine
 
 public class Page : Identifiable, ObservableObject, Hashable {
     public static func == (lhs: Page, rhs: Page) -> Bool {
@@ -17,7 +19,7 @@ public class Page : Identifiable, ObservableObject, Hashable {
     public let id = UUID()
     @Published var number: String
     @Published var items = [ArchivedItem]()
-    
+        
     init(number: String) {
         self.number = number
     }
@@ -38,6 +40,12 @@ public class Page : Identifiable, ObservableObject, Hashable {
     
     func addItem(someItem: ArchivedItem) {
         self.items.append(someItem)
+    }
+    
+    func faces() -> [FaceObservation] {
+        return self.items.flatMap { i in
+            i.faces
+        }
     }
 
 }

@@ -14,7 +14,7 @@ struct ArchivedItemView: View {
     
     @State var active = false
     
-    @State var faces : [VNFaceObservation] = []
+//    @State var faces : [VNFaceObservation] = []
     
     static let initialPlaceholderImage = NSImage(systemSymbolName: "photo", accessibilityDescription: "Drag image file here")!
     
@@ -35,56 +35,7 @@ struct ArchivedItemView: View {
                 GroupBox {
                     if let i = item.image {
                         
-                        Image(nsImage: i).resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 380, height: 400)
-                            .onTapGesture(count: 2) {
-                                print("Double-clicked")
-                                if let u = item.imageFileURL {
-                                    print("Will try and open \(u)")
-                                    NSWorkspace.shared.open(u)
-                                } else {
-                                    print("no url to open")
-                                }
-                            }.overlay {
-                                GeometryReader { (geometry: GeometryProxy) in
-                                    
-                                    // compute a transform matrix
-                                    let imViewHeight = geometry.size.height
-                                    let imViewWidth = geometry.size.width
-                                    let origImageHeight = i.size.height
-                                    let origImageWidth = i.size.width
-                                    
-                                    let imViewAspectRatio = imViewWidth / imViewHeight
-                                    let origImageAspectRatio = origImageWidth / origImageHeight
-                                    
-                                    let scaleFactor = (imViewAspectRatio > origImageAspectRatio) ? imViewHeight / origImageHeight : imViewWidth / origImageWidth
-                                    
-                                    let scaledImageWidth = origImageWidth  * scaleFactor
-                                    let scaledImageHeight = origImageHeight * scaleFactor
-                                    
-                                    // the actual corners of the image
-                                    let adjXVal = (imViewWidth - scaledImageWidth) / 2.0
-                                    let adjYVal = (imViewHeight - scaledImageHeight) / 2.0
-                                    
-                                    
-                                    
-                                    // https://github.com/Willjay90/AppleFaceDetection
-                                    // TODO: handle landscape orientation; need to adjust y-axis flipping by adjYVal somehow
-                                    let transform = CGAffineTransform(scaleX: 1, y: -1).translatedBy(x: adjXVal, y: -scaledImageHeight)
-
-                                    let scale = CGAffineTransform.identity.scaledBy(x: scaledImageWidth, y: scaledImageHeight)
-
-                                    
-                                    ForEach(self.faces, id: \.self) {thisFace in
-                                        
-                                        let facebounds = thisFace.boundingBox.applying(scale).applying(transform)
-                                        
-                                        Rectangle().path(in: facebounds).stroke(Color.red, lineWidth: 2.0)
-
-                                    }
-                                }
-                            }
+                        self.imageWithFaceOverlay(someImage: i)
                         
                         
                     } else {
@@ -98,17 +49,6 @@ struct ArchivedItemView: View {
                 Text("Notes:").frame(maxWidth: .infinity, alignment: .leading)
                 TextEditor(text: $item.notes)
             } // Form
-            
-            Spacer()
-            HStack {
-                Button("Click") {
-                    if let f = FaceDetectionManager.facesInItem(item: item) {
-                        faces = f
-                    }
-                }
-                Spacer()
-                Text("Faces: \(faces.count)")
-            }
                 
         }.padding()
             .frame(minWidth: 512, minHeight: 600) // VStack
@@ -124,6 +64,59 @@ struct ArchivedItemView: View {
         win.title = title
         win.makeKeyAndOrderFront(sender)
         return win
+    }
+    
+    func imageWithFaceOverlay(someImage i : NSImage) -> some View {
+        return Image(nsImage: i).resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 380, height: 400)
+            .onTapGesture(count: 2) {
+                if let u = item.imageFileURL {
+                    NSWorkspace.shared.open(u)
+                }
+            }.overlay {
+                GeometryReader { (geometry: GeometryProxy) in
+                    
+                    // compute a transform matrix
+                    let imViewHeight = geometry.size.height
+                    let imViewWidth = geometry.size.width
+                    let origImageHeight = i.size.height
+                    let origImageWidth = i.size.width
+                    
+                    // Are we in portrait or landscape mode- both for the original image,
+                    // and then however it's endnig up being scaled/fit into the view in question
+                    let imViewAspectRatio = imViewWidth / imViewHeight
+                    let origImageAspectRatio = origImageWidth / origImageHeight
+                    
+                    let scaleFactor = (imViewAspectRatio > origImageAspectRatio) ? imViewHeight / origImageHeight : imViewWidth / origImageWidth
+                    
+                    let scaledImageWidth = origImageWidth  * scaleFactor
+                    let scaledImageHeight = origImageHeight * scaleFactor
+                    
+                    // the actual corners of the image
+                    let adjXVal = (imViewWidth - scaledImageWidth) / 2.0
+                    let adjYVal = (imViewHeight - scaledImageHeight) / 2.0
+                    
+                    
+                    // Useful refs:
+                    // https://stackoverflow.com/questions/73397910/swift-ios-vision-framework-text-recognition-and-rectangles/73399681#73399681
+                    // https://github.com/Willjay90/AppleFaceDetection
+                    
+                    // Handle landscape orientation; need to adjust y-axis flipping by adjYVal somehow, since our image view is scaling "to fit"
+                    let transform = CGAffineTransform(scaleX: 1, y: -1).translatedBy(x: adjXVal, y: -scaledImageHeight - adjYVal)
+
+                    let scale = CGAffineTransform.identity.scaledBy(x: scaledImageWidth, y: scaledImageHeight)
+
+                    
+                    ForEach(item.faces, id: \.self) {thisFace in
+                        
+                        let facebounds = thisFace.boundingBox.applying(scale).applying(transform)
+                        
+                        Rectangle().path(in: facebounds).stroke(Color.red, lineWidth: 2.0)
+
+                    }
+                }
+            }
     }
     
 }
@@ -166,5 +159,7 @@ struct ItemDropDelegate : DropDelegate {
     func dropExited(info: DropInfo) {
         active = false
     }
+    
+    
     
 }

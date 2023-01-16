@@ -9,6 +9,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="ArchivedItemCollectionViewItemController" customModule="AlbumArchiver_SwiftUI" customModuleProvider="target">
             <connections>
                 <outlet property="box" destination="kOj-1N-Gc4" id="fcd-9d-Ibp"/>
+                <outlet property="hasFacesOverlayImageView" destination="adp-3p-6ip" id="CLK-Ma-9vm"/>
                 <outlet property="imageView" destination="qGd-yW-cNY" id="ymj-YM-9D3"/>
                 <outlet property="textField" destination="04z-SI-ncL" id="jB1-Yx-GIk"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="Ud8-pQ-Cb1"/>
@@ -40,6 +41,11 @@
                                 <rect key="frame" x="6" y="4" width="132" height="124"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="axj-ca-EHK"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="adp-3p-6ip">
+                                <rect key="frame" x="115" y="0.0" width="33" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="o3R-z8-6Xg"/>
                             </imageView>
                         </subviews>
                     </view>

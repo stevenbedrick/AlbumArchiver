@@ -27,15 +27,19 @@ class ArchivedItemCollectionViewItemController: NSCollectionViewItem {
     
     var imageWatcher : AnyCancellable?
     var nameWatcher : AnyCancellable?
+    var facesWatcher : AnyCancellable?
     
     var myItem : ArchivedItem?
     
     let initialPlaceholderImage = NSImage(systemSymbolName: "photo", accessibilityDescription: "Drag image file here")!
+    let hasFacesImage = NSImage(systemSymbolName: "face.smiling", accessibilityDescription: "Faces detected!")
     
     var delegate : ArchivedItemCollectionViewItemDelegate?
     
     let defaultBorderWidth = 1.0
     let selectedBorderWidth = 5.0
+    
+    @IBOutlet weak var hasFacesOverlayImageView : NSImageView?
     
     override var isSelected: Bool {
         didSet {
@@ -54,6 +58,12 @@ class ArchivedItemCollectionViewItemController: NSCollectionViewItem {
             v.delegate = self
         }
         
+        if let overlay = hasFacesOverlayImageView {
+//            print("Setting image")
+            overlay.image = hasFacesImage
+            overlay.isHidden = true // start off hidden
+        }
+         
     }
     
     
@@ -71,23 +81,43 @@ class ArchivedItemCollectionViewItemController: NSCollectionViewItem {
         nameWatcher = myItem?.$name.sink(receiveValue: { newName in
             self.textField?.stringValue = newName
         })
+        
+        facesWatcher = myItem?.$faces.sink(receiveValue: { faces in
+                self.hasFacesOverlayImageView?.isHidden = false
+            })
+        
 
 
         if let a = myItem {
             self.textField?.stringValue = a.name
             if let i = a.image {
-                self.imageView?.image = i
+//                self.imageView?.image = i
+                self.imageView?.image = initialPlaceholderImage
+                DispatchQueue.main.async {
+                    self.imageView?.image = i
+                }
             } else {
                 self.imageView?.image = initialPlaceholderImage
             }
             
+            if a.faces.count > 0 {
+                self.hasFacesOverlayImageView?.isHidden = false
+            } else {
+                self.hasFacesOverlayImageView?.isHidden = true
+            }
+
+            
         }
+        
+            
+    
     }
     
     override func viewWillDisappear() {
         super.viewWillDisappear()
         self.imageWatcher?.cancel()
         self.nameWatcher?.cancel()
+        self.facesWatcher?.cancel()
         
     }
     
@@ -129,6 +159,10 @@ class ArchivedItemCollectionViewItemController: NSCollectionViewItem {
             nw.cancel()
         } else {
 //            print("No nameWatcher to cancel")
+        }
+        
+        if let fw = facesWatcher {
+            fw.cancel()
         }
         
         if let i = myItem {

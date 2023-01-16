@@ -34,7 +34,8 @@ struct PageView: View {
                     thisPage.addItem()
                 }.padding()
                 Spacer()
+                Text("Faces: \(thisPage.faces().count)")
             }
-        }
+        }.padding()
     }
 }

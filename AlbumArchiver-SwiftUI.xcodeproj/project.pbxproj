@@ -38,6 +38,8 @@
 		B0A12E4B2960EB90005CA3F4 /* ItemCollectionViewHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A12E4A2960EB90005CA3F4 /* ItemCollectionViewHost.swift */; };
 		B0A12E4E2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A12E4C2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.swift */; };
 		B0A12E4F2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A12E4D2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.xib */; };
+		B0EB77DB2974B4D000B7E8EF /* FaceObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EB77DA2974B4D000B7E8EF /* FaceObservation.swift */; };
+		B0EB77DC2974B65A00B7E8EF /* FaceObservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EB77DA2974B4D000B7E8EF /* FaceObservation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,7 @@
 		B0A12E4A2960EB90005CA3F4 /* ItemCollectionViewHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewHost.swift; sourceTree = "<group>"; };
 		B0A12E4C2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedItemCollectionViewItemController.swift; sourceTree = "<group>"; };
 		B0A12E4D2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArchivedItemCollectionViewItemController.xib; sourceTree = "<group>"; };
+		B0EB77DA2974B4D000B7E8EF /* FaceObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceObservation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +207,7 @@
 				B04271AB293D4A1900F424E5 /* Page.swift */,
 				B04271AD293D4A2100F424E5 /* Library.swift */,
 				B04271B6293E816100F424E5 /* ArchivedItem.swift */,
+				B0EB77DA2974B4D000B7E8EF /* FaceObservation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -426,6 +430,7 @@
 				B04271AA293D4A1000F424E5 /* Album.swift in Sources */,
 				B0616575296F701F00B3F87E /* FaceDetectionManager.swift in Sources */,
 				B04271B3293D613600F424E5 /* PageView.swift in Sources */,
+				B0EB77DB2974B4D000B7E8EF /* FaceObservation.swift in Sources */,
 				B0A12E482960EB5A005CA3F4 /* ItemCollectionViewController.swift in Sources */,
 				B0A12E4B2960EB90005CA3F4 /* ItemCollectionViewHost.swift in Sources */,
 			);
@@ -455,6 +460,7 @@
 				B0616563296E784F00B3F87E /* main.swift in Sources */,
 				B061656E296E789200B3F87E /* Page.swift in Sources */,
 				B061656C296E789200B3F87E /* ArchivedItem.swift in Sources */,
+				B0EB77DC2974B65A00B7E8EF /* FaceObservation.swift in Sources */,
 				B0616572296E809700B3F87E /* AlbumIOUtils.swift in Sources */,
 				B0616576296F744000B3F87E /* FaceDetectionManager.swift in Sources */,
 				B061656B296E789200B3F87E /* Library.swift in Sources */,

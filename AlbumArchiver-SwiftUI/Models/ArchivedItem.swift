@@ -16,8 +16,13 @@ public class ArchivedItem : Identifiable, ObservableObject, Hashable {
     
     @Published var name : String
     @Published var imageFileURL : URL?
-    @Published var image : NSImage?
+    @Published var image : NSImage? { didSet {
+        self.detectFaces()
+    }}
+    
     @Published var notes : String
+    
+    @Published var faces : [FaceObservation] = []
     
     public let id = UUID()
     
@@ -44,8 +49,9 @@ public class ArchivedItem : Identifiable, ObservableObject, Hashable {
             
             // Try and make an image out of this URL; if it succeeds, we're good, otherwise
             // ignore it and move on
-            let rawIm = NSImage(byReferencing: fromUrl)
-            if rawIm.isValid {
+            let rawIm = NSImage(contentsOf: fromUrl)
+            
+            if rawIm != nil && rawIm!.isValid {
 
                 let fileName = fromUrl.lastPathComponent
                 
@@ -65,6 +71,16 @@ public class ArchivedItem : Identifiable, ObservableObject, Hashable {
         
         
 
+    }
+    
+    func detectFaces() {
+        DispatchQueue.global(qos: .background   ).async {
+            if let f = FaceDetectionManager.facesInItem(item: self, methodToUse: .vision) {
+                DispatchQueue.main.async {
+                    self.faces = f
+                }
+            }
+        }
     }
 
     
