@@ -94,6 +94,10 @@ func loadLibrary(atRootDir rootDirUrl: URL) -> Result<Library,LibraryLoadError> 
         }
     }
     
+    toRet.albums = toRet.albums.sorted(by: { a, b in
+        a.name < b.name
+    })
+    
     return .success(toRet)
 
 }
@@ -145,6 +149,10 @@ func loadAlbumFromDir(atPath albumDir: URL) -> Result<Album,AlbumLoadError> {
         }
     }
     
+    pagesForThisAlbum = pagesForThisAlbum.sorted(by: { a, b in
+        a.number < b.number
+    })
+    
     return .success(Album(withName: albumDir.lastPathComponent, pages: pagesForThisAlbum))
     
 }
@@ -185,14 +193,20 @@ func loadPageFromDir(atPath pageDir: URL) -> Result<Page,PageLoadError> {
         let thisItem = ArchivedItem(withName: item.lastPathComponent)
         thisItem.imageFileURL = item
         
-        let rawIm = NSImage(byReferencing: item)
-        if rawIm.isValid {
+//        let rawIm = NSImage(byReferencing: item)
+        let rawIm = NSImage(contentsOf: item)
+//        print(rawIm)
+        if rawIm != nil && rawIm!.isValid {
             thisItem.image = rawIm
         } else {
             return .failure(.invalidImageForItem(itemUrl: item, underlyingError: nil))
         }
         
         itemsForThisPage.append(thisItem)
+        
+        itemsForThisPage = itemsForThisPage.sorted(by: { a, b in
+            a.name < b.name
+        })
         
     }
     
