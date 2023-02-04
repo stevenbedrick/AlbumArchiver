@@ -102,6 +102,7 @@
 		B0A12E4A2960EB90005CA3F4 /* ItemCollectionViewHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewHost.swift; sourceTree = "<group>"; };
 		B0A12E4C2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedItemCollectionViewItemController.swift; sourceTree = "<group>"; };
 		B0A12E4D2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArchivedItemCollectionViewItemController.xib; sourceTree = "<group>"; };
+		B0BC0FBF298F126700B367E8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B0EB77DA2974B4D000B7E8EF /* FaceObservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceObservation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +141,7 @@
 		B0427171293D49CF00F424E5 = {
 			isa = PBXGroup;
 			children = (
+				B0BC0FBF298F126700B367E8 /* README.md */,
 				B042717C293D49CF00F424E5 /* AlbumArchiver-SwiftUI */,
 				B042718E293D49D200F424E5 /* AlbumArchiver-SwiftUITests */,
 				B0427198293D49D200F424E5 /* AlbumArchiver-SwiftUIUITests */,
