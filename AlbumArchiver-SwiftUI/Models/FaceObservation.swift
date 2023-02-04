@@ -25,7 +25,11 @@ struct FaceObservation : Identifiable, Hashable {
     let id = UUID()
 
     // Note: coordintes for bounding box might vary in their
-    // interpretation according to the underlying type...
+    // interpretation according to the underlying type. I.e.,
+    // they might be in absolute pixel coordinates or normalized
+    // [0,1] coordinates, the origin might be in the lower-left
+    // or upper-left, etc.
+    // TODO: should we harmonize this somehow?
     let boundingBox : CGRect
     let type : FaceObservationType
     
