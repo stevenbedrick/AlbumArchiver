@@ -18,3 +18,4 @@ There's no real reason why this can't be used for born-digital photo collections
 - Face-related metadat should also be persisted; there are XMP metadata tags for face detection, and maybe we should use those?
 - Moving beyond the dedicated photo album metaphor, we also need a way to have ad-hoc photo collections ("here's an envelope full of random snapshots").
     - I don't necessarily want to get too far down the rabbit hole about managing collections/albums like Photos/Lightroom etc. do- better to focus on replicating the physical metaphor.
+- Library I/O should be async, so the app doesn't hang on startup
