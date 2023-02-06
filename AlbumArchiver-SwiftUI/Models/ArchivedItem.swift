@@ -69,8 +69,6 @@ public class ArchivedItem : Identifiable, ObservableObject, Hashable {
             
         }
         
-        
-
     }
     
     func detectFaces() {
@@ -80,6 +78,26 @@ public class ArchivedItem : Identifiable, ObservableObject, Hashable {
                     self.faces = f
                 }
             }
+        }
+    }
+    
+    func removeDetectedFace(faceToRemove: FaceObservation, withUndoManager undoManager: UndoManager? = nil) {
+        DispatchQueue.main.async {
+            self.faces.removeAll { someFaceObs in
+                someFaceObs == faceToRemove
+            }
+            
+            undoManager?.registerUndo(withTarget: self) { anArchivedItem in
+                anArchivedItem.addDetectedFace(faceToAdd: faceToRemove, withUndoManager: undoManager)
+            }
+            undoManager?.setActionName("Remove Face")
+        }
+    }
+    
+    func addDetectedFace(faceToAdd: FaceObservation, withUndoManager undoManager: UndoManager? = nil) {
+        // TODO: maybe check to make sure that we don't already have this same FaceObservation?
+        DispatchQueue.main.async {
+            self.faces.append(faceToAdd)
         }
     }
 

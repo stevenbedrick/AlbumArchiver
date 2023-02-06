@@ -10,6 +10,8 @@ import Vision
 
 struct ArchivedItemView: View {
     
+    @Environment(\.undoManager) var undoManager
+    
     @ObservedObject var item : ArchivedItem
     
     @State var active = false
@@ -77,6 +79,28 @@ struct ArchivedItemView: View {
             }.overlay {
                 GeometryReader { (geometry: GeometryProxy) in
                     
+                    /*
+                     
+                     Draw Rectangles over our image for each face that we've found.
+                     
+                     This is slightly tricky: our face bounding boxes are in a coordinate system relative to the image
+                     itself, and we need to draw them in a totally different coordinate system: that of the Image View
+                     displaying our Item's image, which itself is containined in some other View.
+                     
+                     As an additional complication, our image is scaled to fit, which means that (depending on its
+                     orientation, portrait vs. landscape) its boundaries are offset from either the sides or the top/bottom
+                     of the Image.
+                     
+                     So we need to do multiple transformations:
+                     
+                     1. Flip y-coordinates, since SwiftUI's coordinate system is flipped relative to the one used by NSImage etc.
+                     2. Handle translation in X (if portrait) or Y (if landscape) due to the scale-to-fit
+                     3. Scale from the image's dimensions to those of our containing View
+                     
+                     This is a little convoluted!
+                     
+                     */
+                    
                     // compute a transform matrix
                     let imViewHeight = geometry.size.height
                     let imViewWidth = geometry.size.width
@@ -112,8 +136,12 @@ struct ArchivedItemView: View {
                         
                         let facebounds = thisFace.boundingBox.applying(scale).applying(transform)
                         
-                        Rectangle().path(in: facebounds).stroke(Color.red, lineWidth: 2.0)
-
+                        FaceOverlayRectangle(faceBounds: facebounds)
+                            .onCloseButton {
+                                item.removeDetectedFace(faceToRemove: thisFace, withUndoManager: undoManager)
+                                
+                            }
+                            .offset(x: facebounds.origin.x, y: facebounds.origin.y)
                     }
                 }
             }
