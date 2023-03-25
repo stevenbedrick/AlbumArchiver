@@ -28,16 +28,39 @@ struct LibraryMenuView : View {
 
         
         VStack {
-            List(menu, id: \.value, children: \.children) { item in
-                
-                switch item.value {
-                case .album(let a):
-                    AlbumMenuItemVIew(item: a)
-                case .page(let p):
-                    PageMenuItemView(item: p)
+            
+            List {
+                Section(header: Text("Albums")) {
+                    
+                    OutlineGroup(menu, id: \.value, children: \.children) { item in
+                        switch item.value {
+                        case .album(let a):
+                            AlbumMenuItemVIew(item: a)
+                        case .page(let p):
+                            PageMenuItemView(item: p)
+                        }
+
+                    }
+                    
                 }
                 
+                Divider()
+                
+                PersonMenuItemView(library: library)
+                
+
             }.listStyle(.sidebar)
+            
+//            List(menu, id: \.value, children: \.children) { item in
+//
+//                switch item.value {
+//                case .album(let a):
+//                    AlbumMenuItemVIew(item: a)
+//                case .page(let p):
+//                    PageMenuItemView(item: p)
+//                }
+//
+//            }.listStyle(.sidebar)
             
             
         }
@@ -136,6 +159,22 @@ struct PageMenuItemView : View {
     }
     
     
+}
+
+struct PersonMenuItemView : View {
+    static let personImage = NSImage.init(systemSymbolName: "person.fill", accessibilityDescription: "People in library")!
+    
+    @ObservedObject var library : Library
+    
+    var body : some View {
+        NavigationLink(destination: PersonListView(library: library)) {
+            HStack{
+                Image(nsImage: PersonMenuItemView.personImage)
+                Text("People")
+            }
+        }
+
+    }
 }
 
 

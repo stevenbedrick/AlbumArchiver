@@ -19,6 +19,8 @@ struct FaceOverlayRectangle: View {
     var closeHandler : (() -> Void)?
     
     @State var isHovered = false
+    @State var personLinkPopoverShowing = false
+    
     
     var body: some View {
         Rectangle()
@@ -29,6 +31,7 @@ struct FaceOverlayRectangle: View {
             .onHover { over in
                 isHovered = over
             }
+            
     }
     
     @ViewBuilder private var deleteOverlay: some View {

@@ -83,10 +83,11 @@ func loadLibrary(atRootDir rootDirUrl: URL) -> Result<Library,LibraryLoadError> 
         
         // if it is a directory, try loading it as an album
         if dirProps.isDirectory! {
-            let thisAlbum = loadAlbumFromDir(atPath: albumDir)
+            let thisAlbum = loadAlbumFromDir(atPath: albumDir, forLibrary: toRet)
             
             switch thisAlbum {
             case .success(let alb):
+                alb.library = toRet
                 toRet.addAlbum(existingAlbum: alb)
             case .failure(let err):
                 return .failure(.albumLoadError(albumUrl: albumDir, underlyingError: err))
@@ -103,7 +104,7 @@ func loadLibrary(atRootDir rootDirUrl: URL) -> Result<Library,LibraryLoadError> 
 }
 
 
-func loadAlbumFromDir(atPath albumDir: URL) -> Result<Album,AlbumLoadError> {
+func loadAlbumFromDir(atPath albumDir: URL, forLibrary: Library) -> Result<Album,AlbumLoadError> {
     
 //    print("About to try loading \(albumDir.lastPathComponent)")
     
@@ -127,6 +128,8 @@ func loadAlbumFromDir(atPath albumDir: URL) -> Result<Album,AlbumLoadError> {
     }
     
     var pagesForThisAlbum : [Page] = []
+    let toReturn = Album(withName: albumDir.lastPathComponent, pages: [], inLibrary: forLibrary)
+
     
     for possiblePage in pageDirs {
         // look at each child...
@@ -139,7 +142,7 @@ func loadAlbumFromDir(atPath albumDir: URL) -> Result<Album,AlbumLoadError> {
         
         // if it is a directory, try loading it as an album
         if dirProps.isDirectory! {
-            let thisPage = loadPageFromDir(atPath: possiblePage)
+            let thisPage = loadPageFromDir(atPath: possiblePage, forAlbum: toReturn)
             switch thisPage {
             case .success(let p):
                 pagesForThisAlbum.append(p)
@@ -153,12 +156,15 @@ func loadAlbumFromDir(atPath albumDir: URL) -> Result<Album,AlbumLoadError> {
         a.number < b.number
     })
     
-    return .success(Album(withName: albumDir.lastPathComponent, pages: pagesForThisAlbum))
+    toReturn.pages = pagesForThisAlbum
+    
+    
+    return .success(toReturn)
     
 }
 
 
-func loadPageFromDir(atPath pageDir: URL) -> Result<Page,PageLoadError> {
+func loadPageFromDir(atPath pageDir: URL, forAlbum album: Album) -> Result<Page,PageLoadError> {
     
 //    print("Loading page \(pageDir.lastPathComponent)")
     
@@ -170,6 +176,8 @@ func loadPageFromDir(atPath pageDir: URL) -> Result<Page,PageLoadError> {
     }
     
     var itemsForThisPage : [ArchivedItem] = []
+    
+    let toReturn = Page(number: pageDir.lastPathComponent, withItems: [], inAlbum: album)
     
     for item in possibleItems {
 //        print("possible item found: \(item.lastPathComponent)")
@@ -190,7 +198,7 @@ func loadPageFromDir(atPath pageDir: URL) -> Result<Page,PageLoadError> {
             continue
         }
         
-        let thisItem = ArchivedItem(withName: item.lastPathComponent)
+        let thisItem = ArchivedItem(withName: item.lastPathComponent, onPage: toReturn)
         thisItem.imageFileURL = item
         
 //        let rawIm = NSImage(byReferencing: item)
@@ -210,6 +218,9 @@ func loadPageFromDir(atPath pageDir: URL) -> Result<Page,PageLoadError> {
         
     }
     
-    return .success(Page(number: pageDir.lastPathComponent, withItems: itemsForThisPage))
+    toReturn.items = itemsForThisPage
+    
+    
+    return .success(toReturn)
     
 }

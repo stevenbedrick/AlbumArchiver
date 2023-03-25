@@ -216,16 +216,19 @@ extension ItemCollectionViewController : FileDragDropDelegate {
                 // blow up badly
                 DispatchQueue.main.async {
                     
-                    // set up a new item
-                    // first, figure out file name
-                    let newItem : ArchivedItem
-                    if let fileName = url.lastPathComponent {
-                        newItem = ArchivedItem(withName: fileName, withImage: rawIm, atUrl: url as URL)
-                    } else {
-                        newItem = ArchivedItem(withName: "New Item", withImage: rawIm)
+                    if let currPage = self.thisPage {
+                        // set up a new item
+                        // first, figure out file name
+                        let newItem : ArchivedItem
+                        if let fileName = url.lastPathComponent {
+                            newItem = ArchivedItem(withName: fileName, onPage: currPage, withImage: rawIm, atUrl: url as URL)
+                        } else {
+                            newItem = ArchivedItem(withName: "New Item", onPage: currPage, withImage: rawIm)
+                        }
+                        
+                        currPage.addItem(someItem: newItem)
                     }
                     
-                    self.thisPage?.addItem(someItem: newItem)
                 }
             }  else {
                 print("Could not load image from \(url)")

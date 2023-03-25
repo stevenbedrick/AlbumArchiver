@@ -16,6 +16,8 @@ class Library : Identifiable, ObservableObject {
     
     @Published var albums: [Album] = []
     
+    @Published var people: [Person] = []
+    
     var albumWatchers : [Cancellable] = []
     
     init() {
@@ -53,20 +55,28 @@ class Library : Identifiable, ObservableObject {
         
         let dummyAlbumA = Album(
                                withName: "First",
-                               pages: [
-                                   Page(number: "1", withItems: [
-                                   ]),
-                                   Page(number: "2")
-                               ])
+                               pages: [], inLibrary: toRet)
+        for somePageNum in ["1","2"] {
+            let p = Page(number: somePageNum, inAlbum: dummyAlbumA)
+            dummyAlbumA.pages.append(p)
+        }
+
         toRet.addAlbum(existingAlbum: dummyAlbumA)
         
         let dummyAlbumB = Album(
                                 withName: "Second",
-                                pages: [Page(number: "I"), Page(number: "II"), Page(number: "III")]
+                                pages: [],
+                                inLibrary: toRet
                                 )
+        for somePageNum in ["I", "II", "III"] {
+            let p = Page(number: somePageNum, inAlbum: dummyAlbumB)
+            dummyAlbumB.pages.append(p)
+        }
+        
+        
         toRet.addAlbum(existingAlbum: dummyAlbumB)
         
-        let dummyAlbumC = Album(withName: "Third", pages: [])
+        let dummyAlbumC = Album(withName: "Third", pages: [], inLibrary: toRet)
         
         toRet.addAlbum(existingAlbum: dummyAlbumC)
         
@@ -75,7 +85,8 @@ class Library : Identifiable, ObservableObject {
     }
     
     static func initAtTestDirLocation() -> Library {
-        let rootDirPath = "/Users/steven/Desktop/Hacking/Album Archiver Idea/Test Library"
+//        let rootDirPath = "/Users/steven/Desktop/Hacking/Album Archiver Idea/Test Library"
+        let rootDirPath = "/Users/bedricks/Desktop/Hacking/album_archive_idea/Test Library"
 
         let rootDirUrl = URL.init(fileURLWithPath: rootDirPath) as NSURL
         
@@ -97,11 +108,16 @@ class Library : Identifiable, ObservableObject {
     }
     
     func addAlbum(existingAlbum anAlbum : Album) {
-        anAlbum.memberOf = self
+        anAlbum.library = self
         self.albums.append(anAlbum)
         wireObserver(forAlbum: anAlbum)
     }
     
+    func addPerson(withName aName: String) -> Person {
+        let newPerson = Person(name: aName)
+        self.people.append(newPerson)
+        return newPerson
+    }
     
     // If we don't do this, changes to an album in self.albums will not necessarily
     // cause the Library (or things watching ths library) to know there's been

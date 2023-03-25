@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93793D9B29CF6F6900CEFDA0 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93793D9A29CF6F6900CEFDA0 /* Person.swift */; };
+		93793D9D29CF756200CEFDA0 /* PersonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93793D9C29CF756200CEFDA0 /* PersonListView.swift */; };
+		93793D9F29CF802F00CEFDA0 /* PersonPickerPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93793D9E29CF802F00CEFDA0 /* PersonPickerPopupView.swift */; };
 		B042717E293D49CF00F424E5 /* AlbumArchiver_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B042717D293D49CF00F424E5 /* AlbumArchiver_SwiftUIApp.swift */; };
 		B0427180293D49CF00F424E5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B042717F293D49CF00F424E5 /* ContentView.swift */; };
 		B0427182293D49D200F424E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0427181293D49D200F424E5 /* Assets.xcassets */; };
@@ -73,6 +76,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		93793D9A29CF6F6900CEFDA0 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		93793D9C29CF756200CEFDA0 /* PersonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonListView.swift; sourceTree = "<group>"; };
+		93793D9E29CF802F00CEFDA0 /* PersonPickerPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonPickerPopupView.swift; sourceTree = "<group>"; };
 		B042717A293D49CF00F424E5 /* AlbumArchiver-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AlbumArchiver-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B042717D293D49CF00F424E5 /* AlbumArchiver_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumArchiver_SwiftUIApp.swift; sourceTree = "<group>"; };
 		B042717F293D49CF00F424E5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -212,6 +218,7 @@
 				B04271AD293D4A2100F424E5 /* Library.swift */,
 				B04271B6293E816100F424E5 /* ArchivedItem.swift */,
 				B0EB77DA2974B4D000B7E8EF /* FaceObservation.swift */,
+				93793D9A29CF6F6900CEFDA0 /* Person.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,6 +232,8 @@
 				B04271B2293D613600F424E5 /* PageView.swift */,
 				B04271B4293D794B00F424E5 /* LibraryMenuVIew.swift */,
 				B09783B1294FF1DC00C13D2D /* ArchivedItemGrid.swift */,
+				93793D9C29CF756200CEFDA0 /* PersonListView.swift */,
+				93793D9E29CF802F00CEFDA0 /* PersonPickerPopupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -430,6 +439,7 @@
 			files = (
 				B04271B1293D4CB900F424E5 /* AlbumView.swift in Sources */,
 				B0616571296E7F6A00B3F87E /* AlbumIOUtils.swift in Sources */,
+				93793D9D29CF756200CEFDA0 /* PersonListView.swift in Sources */,
 				B0427180293D49CF00F424E5 /* ContentView.swift in Sources */,
 				B042717E293D49CF00F424E5 /* AlbumArchiver_SwiftUIApp.swift in Sources */,
 				B09783B2294FF1DC00C13D2D /* ArchivedItemGrid.swift in Sources */,
@@ -437,7 +447,9 @@
 				B04FD4F5296BC78C004345F5 /* ArchivedITmeCollectionViewItemView.swift in Sources */,
 				B04271B7293E816100F424E5 /* ArchivedItem.swift in Sources */,
 				B0A12E4E2960FF62005CA3F4 /* ArchivedItemCollectionViewItemController.swift in Sources */,
+				93793D9F29CF802F00CEFDA0 /* PersonPickerPopupView.swift in Sources */,
 				B04271B92940FED400F424E5 /* ArchivedItemView.swift in Sources */,
+				93793D9B29CF6F6900CEFDA0 /* Person.swift in Sources */,
 				B04271AC293D4A1900F424E5 /* Page.swift in Sources */,
 				B04271B5293D794B00F424E5 /* LibraryMenuVIew.swift in Sources */,
 				B04271AA293D4A1000F424E5 /* Album.swift in Sources */,

@@ -33,6 +33,8 @@ struct FaceObservation : Identifiable, Hashable {
     let boundingBox : CGRect
     let type : FaceObservationType
     
+    var person : Person? // the person that this observation is linked to
+    
     init(boundingBox: CGRect, detectionType: FaceObservationType) {
         self.boundingBox = boundingBox
         self.type = detectionType

@@ -24,12 +24,17 @@ public class ArchivedItem : Identifiable, ObservableObject, Hashable {
     
     @Published var faces : [FaceObservation] = []
     
+    @Published var people : [Person] = []
+    
+    @ObservedObject var page : Page // the page this is on
+    
     public let id = UUID()
     
-    init(withName: String, withImage: NSImage? = nil,atUrl: URL? = nil,  withNotes: String? = nil) {
+    init(withName: String, onPage: Page, withImage: NSImage? = nil, atUrl: URL? = nil,  withNotes: String? = nil) {
         name = withName
         image = withImage
         imageFileURL = atUrl
+        page = onPage
         
         if let s = withNotes {
             notes = s

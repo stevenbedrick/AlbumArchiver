@@ -19,14 +19,18 @@ public class Page : Identifiable, ObservableObject, Hashable {
     public let id = UUID()
     @Published var number: String
     @Published var items = [ArchivedItem]()
+    
+    @ObservedObject var album : Album
         
-    init(number: String) {
+    init(number: String, inAlbum album: Album) {
         self.number = number
+        self.album = album
     }
     
-    init(number: String, withItems items: [ArchivedItem]) {
+    init(number: String, withItems items: [ArchivedItem], inAlbum album: Album) {
         self.number = number
         self.items = items
+        self.album = album
     }
     
     public func hash(into hasher: inout Hasher) {
@@ -35,10 +39,12 @@ public class Page : Identifiable, ObservableObject, Hashable {
     }
     
     func addItem() {
-        self.items.append(ArchivedItem(withName: "New Item"))
+        let toAppend = ArchivedItem(withName: "New Item", onPage: self)
+        self.items.append(toAppend)
     }
     
     func addItem(someItem: ArchivedItem) {
+        someItem.page = self
         self.items.append(someItem)
     }
     

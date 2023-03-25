@@ -11,7 +11,7 @@ import Vision
 struct ArchivedItemView: View {
     
     @Environment(\.undoManager) var undoManager
-    
+        
     @ObservedObject var item : ArchivedItem
     
     @State var active = false
@@ -20,6 +20,8 @@ struct ArchivedItemView: View {
     @State var stopPoint : CGPoint? = nil
     
     @State var currentManualSelectionRect : CGRect? = nil
+    
+    @State var personLinkPopoverShowing = false
     
 //    @State var faces : [VNFaceObservation] = []
     
@@ -144,7 +146,14 @@ struct ArchivedItemView: View {
                                 .onCloseButton {
                                     item.removeDetectedFace(faceToRemove: thisFace, withUndoManager: undoManager)
                                 }
+                                .popover(isPresented: $personLinkPopoverShowing, arrowEdge: .bottom) {
+                                    PersonPickerPopupView(thisItem: self.item, faceObs: thisFace).environmentObject(item.page.album.library)
+                                }
+                                .onTapGesture {
+                                    personLinkPopoverShowing = !personLinkPopoverShowing
+                                }
                                 .offset(x: facebounds.origin.x, y: facebounds.origin.y)
+                                
                         }
                         
                     } // end geometry reader

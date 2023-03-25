@@ -18,7 +18,7 @@ public class Album : Identifiable, ObservableObject, Equatable, Hashable {
     @Published var name: String 
     @Published var pages: [Page]
     
-    var memberOf: Library?
+    @ObservedObject var library: Library
     
     
     public func hash(into hasher: inout Hasher) {
@@ -27,24 +27,25 @@ public class Album : Identifiable, ObservableObject, Equatable, Hashable {
     }
 
     
-    init(withName name: String, pages: [Page]?) {
+    init(withName name: String, pages: [Page]?, inLibrary: Library) {
         self.name = name
         if let p = pages {
             self.pages = p
         } else {
             self.pages = []
         }
+        library = inLibrary
     }
     
     convenience init(inLibrary: Library, name: String, pages: [Page]?) {
-        self.init(withName: name, pages: pages)
+        self.init(withName: name, pages: pages, inLibrary: inLibrary)
         
-        memberOf = inLibrary
         
     }
     
     func addPage() {
-        pages.append(Page(number: "New Page"))
+        let toAppend = Page(number: "New Page", inAlbum: self)
+        pages.append(toAppend)
     }
     
 }
