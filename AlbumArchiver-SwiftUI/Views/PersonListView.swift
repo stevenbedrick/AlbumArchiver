@@ -11,12 +11,7 @@ struct PersonListView: View {
     
     @ObservedObject var library: Library
     
-    @State var newPersonName = "" {
-        didSet {
-            // Does not appear to be working
-            isValid = validate()
-        }
-    }
+    @State var newPersonName = "" 
     
     @State var selectedPeople = Set<Person.ID>()
     
@@ -31,8 +26,8 @@ struct PersonListView: View {
             .onDeleteCommand(perform: {
                 for p in selectedPeople {
                     // find the index
-                    if let idx = library.people.firstIndex(where: {$0.id == p}) {
-                        library.people.remove(at: idx)
+                    if let p = library.people.first(where: {$0.id == p}) {
+                        library.removePerson(somePerson: p)
                     }
                 }
             })
@@ -44,13 +39,26 @@ struct PersonListView: View {
                     .keyboardShortcut(.defaultAction)
                     
                 Spacer()
+            }.onChange(of: newPersonName) { newValue in
+                isValid = validate()
             }
         }.padding()
     }
     
     func validate() -> Bool {
-        // this logic isn't working
-        if newPersonName.trimmingCharacters(in: .whitespaces).count > 0 {
+        
+        let isBlank = newPersonName.trimmingCharacters(in: .whitespaces).count == 0
+        
+        var isDuplicate = false
+        for p in library.people {
+            // TODO: change algorithm if we end up with a substantial number of names
+            if p.name == newPersonName { // string comparison this way works!
+                isDuplicate = true
+                break
+            }
+        }
+        
+        if !isBlank && !isDuplicate {
             return true
         } else {
             return false

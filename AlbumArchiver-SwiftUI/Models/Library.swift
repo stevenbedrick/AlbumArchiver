@@ -16,7 +16,7 @@ class Library : Identifiable, ObservableObject {
     
     @Published var albums: [Album] = []
     
-    @Published var people: [Person] = []
+    @Published var people: [Person] = [Person(name: "Homer Simpson"), Person(name: "Ned Flanders")]
     
     var albumWatchers : [Cancellable] = []
     
@@ -117,6 +117,16 @@ class Library : Identifiable, ObservableObject {
         let newPerson = Person(name: aName)
         self.people.append(newPerson)
         return newPerson
+    }
+    
+    func removePerson(somePerson: Person) {
+        if let idx = self.people.firstIndex(where: {$0.id == somePerson.id}) {
+            
+            // TODO: also unlink this person from everywhere else they might exist-
+            //   Face observations, items, etc.
+            self.people.remove(at: idx)
+            
+        }
     }
     
     // If we don't do this, changes to an album in self.albums will not necessarily
