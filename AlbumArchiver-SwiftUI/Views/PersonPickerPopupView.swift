@@ -14,21 +14,38 @@ struct PersonPickerPopupView: View {
     var thisItem : ArchivedItem
     var faceObs : FaceObservation
     
-//    @State var selectedPerson: Person
+    @State var filteredPeople: [Person] = []
+    
+    @State var searchQuery = ""
     
     var body: some View {
         VStack{
-            Text("Library has \(library.people.count) people").padding()
-            
+//            Text("Library has \(library.people.count) people").padding()
+            TextField("Find Name", text: $searchQuery).frame(width: 240)
+            List(filteredPeople, id: \.id) { person in
+                Button(person.name) {
+                    NSLog("Clicked: \(person.name)")
+                }
+            }.frame(height: 240)
+            Text("Filtered persons: \(filteredPeople.count)")
         }
-//        VStack {
-//            Picker("Choose a person:", selection: $selectedPerson) {
-//                Text("No selection...")
-//                ForEach(library.people, id: \.self) {
-//                    Text($0.name)
-//                }
-//            }.pickerStyle(.menu)
-//        }
+        .onChange(of: searchQuery) { _ in
+            filterPeople()
+        }
+        .padding()
+        .frame( maxWidth: .infinity, maxHeight: .infinity)
+
+    }
+    
+    func filterPeople() {
+        if searchQuery.isEmpty {
+            filteredPeople = library.people
+        } else {
+            filteredPeople = library.people.filter {
+                $0.name.localizedCaseInsensitiveContains(searchQuery)
+            }
+        }
+
     }
     
 }

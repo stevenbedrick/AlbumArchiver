@@ -16,7 +16,13 @@ class Library : Identifiable, ObservableObject {
     
     @Published var albums: [Album] = []
     
-    @Published var people: [Person] = [Person(name: "Homer Simpson"), Person(name: "Ned Flanders")]
+    @Published var people: [Person] = [
+        Person(name: "Homer Simpson"), Person(name: "Ned Flanders"),
+        Person(name: "Maggie Simpson"), Person(name: "Maude Flanders"),
+        Person(name: "Lisa Simpson"), Person(name: "Winston Smithers"),
+        Person(name: "Moe Sizlack"), Person(name: "Bob Terwilliger"),
+        Person(name: "Seymour Skinner"), Person(name: "Lisa Simpson")
+    ]
     
     var albumWatchers : [Cancellable] = []
     
